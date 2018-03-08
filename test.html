@@ -46,6 +46,7 @@
                     <li class="PASSED">test_A (__main__.MyTestCase)<br/>
                         <p>A simple test that should PASS.</p>
                         <p class="state">PASSED</p>
+
                         
                         
                     </li>
@@ -53,8 +54,18 @@
                     <li class="FAILED">test_B (__main__.MyTestCase)<br/>
                         <p>A simple test FAILURE.</p>
                         <p class="state">FAILED</p>
+
                         
-                            <p>Describe failure here ...</p>
+                            <p>&lt;type &#39;exceptions.AssertionError&#39;&gt;: True is not false</p>
+                            <p><ul>
+                                
+                                    <li>(&#39;/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/case.py&#39;, 331, &#39;run&#39;, &#39;testMethod()&#39;)</li>
+                                
+                                    <li>(&#39;/Users/adrian/Documents/github/page-objects-cucumber/CustomTestRunner/test.py&#39;, 13, &#39;test_B&#39;, &#39;self.assertFalse(True)&#39;)</li>
+                                
+                                    <li>(&#39;/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/case.py&#39;, 418, &#39;assertFalse&#39;, &#39;raise self.failureException(msg)&#39;)</li>
+                                
+                            </ul></p>
                         
                         
                     </li>
@@ -62,9 +73,17 @@
                     <li class="ERROR">test_C (__main__.MyTestCase)<br/>
                         <p>A simple ERROR raising test.</p>
                         <p class="state">ERROR</p>
+
                         
                         
-                            <p>Describe errors here ...</p>
+                            <p>&lt;type &#39;exceptions.TypeError&#39;&gt;: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;</p>
+                            <p><ul>
+                                
+                                    <li>(&#39;/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/unittest/case.py&#39;, 331, &#39;run&#39;, &#39;testMethod()&#39;)</li>
+                                
+                                    <li>(&#39;/Users/adrian/Documents/github/page-objects-cucumber/CustomTestRunner/test.py&#39;, 18, &#39;test_C&#39;, &#34;assert 1 + &#39;a&#39; == 32&#34;)</li>
+                                
+                            </ul></p>
                         
                     </li>
                 

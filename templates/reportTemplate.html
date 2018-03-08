@@ -14,10 +14,20 @@
                         <p class="state">{{ test.state }}</p>
 
                         {% if test.state == "FAILED" %}
-                            <p>Describe failure here ...</p>
+                            <p>{{ test.failure.type }}: {{ test.failure.msg }}</p>
+                            <p><ul>
+                                {% for tb in test.failure.tb %}
+                                    <li>{{ tb }}</li>
+                                {% endfor %}
+                            </ul></p>
                         {% endif %}
                         {% if test.state == "ERROR" %}
-                            <p>Describe errors here ...</p>
+                            <p>{{ test.error.type }}: {{ test.error.msg }}</p>
+                            <p><ul>
+                                {% for tb in test.error.tb %}
+                                    <li>{{ tb }}</li>
+                                {% endfor %}
+                            </ul></p>
                         {% endif %}
                     </li>
                 {% endfor %}

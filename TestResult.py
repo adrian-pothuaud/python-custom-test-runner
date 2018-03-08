@@ -12,6 +12,7 @@ __author__ = 'adrianpothuaud'
 """
 
 import sys
+import traceback
 import unittest
 
 DEBUG = True
@@ -92,7 +93,11 @@ class TestResult(unittest.TestResult):
             sys.stdout.write("Test result add test error...\n")
         unittest.TestResult.addError(self, test, err)
         self.current_test["state"] = test_states["err"]
-        self.current_test["error"] = err
+        self.current_test["error"] = {
+            "type": err[0],
+            "msg": err[1],
+            "tb": traceback.extract_tb(err[2])
+        }
         self.tests.append(self.current_test)
         self.current_test = None
 
@@ -107,6 +112,10 @@ class TestResult(unittest.TestResult):
             sys.stdout.write("Test result add test failure...\n")
         unittest.TestResult.addFailure(self, test, err)
         self.current_test["state"] = test_states["fail"]
-        self.current_test["failure"] = err
+        self.current_test["failure"] = {
+            "type": err[0],
+            "msg": err[1],
+            "tb": traceback.extract_tb(err[2])
+        }
         self.tests.append(self.current_test)
         self.current_test = None

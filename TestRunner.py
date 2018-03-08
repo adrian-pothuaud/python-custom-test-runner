@@ -41,10 +41,6 @@ class TestRunner:
         )
         template = env.get_template('reportTemplate.html')
         output = template.render(tests=tests, time_taken=time_taken, title=self.title, description=self.description)
-        if DEBUG:
-            sys.stdout.write("Template renders:\n")
-            sys.stdout.write(output)
-            sys.stdout.write("\n")
         with open(self.stream, "w") as f:
             f.write(output)
 
