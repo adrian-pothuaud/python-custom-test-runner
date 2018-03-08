@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <p class="description">{{ description }}</p>
+        <p>Run {{ tests|length }} tests in {{ '%0.2f'| format(time_taken|float) }}s.</p>
+        <canvas id="myCamembert">
+        </canvas>
+        <div class="results">
+            <ul>
+                {% for test in tests %}
+                    <li class="{{ test.state }}">{{ test.abstract }}<br/>
+                        <p>{{ test.description }}</p>
+                        <p class="state">{{ test.state }}</p>
+
+                        {% if test.state == "FAILED" %}
+                            <p>Describe failure here ...</p>
+                        {% endif %}
+                        {% if test.state == "ERROR" %}
+                            <p>Describe errors here ...</p>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

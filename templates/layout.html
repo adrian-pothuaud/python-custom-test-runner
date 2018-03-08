@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style>
+        .description{
+            font-weight: bolder;
+        }
+        .PASSED{
+            color: darkgreen;
+        }
+        .FAILED{
+            color: darkorange;
+        }
+        .ERROR{
+            color: crimson;
+        }
+        .state{
+            font-weight: bold;
+        }
+        .myCamembert{
+            width: 50%;
+            height: 50%;
+        }
+    </style>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous">
+    </script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+    {% block body %}
+    {% endblock body %}
+    <script>
+        $(document).ready(function(){
+            // alert("Welcome to my test report !");
+            function pie(ctx, w, h, datalist)
+            {
+              var radius = h / 2 - 5;
+              var centerx = w / 2;
+              var centery = h / 2;
+              var total = 0;
+              for(x=0; x < datalist.length; x++) { total += datalist[x]; };
+              var lastend=0;
+              var offset = Math.PI / 2;
+              for(x=0; x < datalist.length; x++)
+              {
+                var thispart = datalist[x];
+                ctx.beginPath();
+                ctx.fillStyle = colist[x];
+                ctx.moveTo(centerx,centery);
+                var arcsector = Math.PI * (2 * thispart / total);
+                ctx.arc(centerx, centery, radius, lastend - offset, lastend + arcsector - offset, false);
+                ctx.lineTo(centerx, centery);
+                ctx.fill();
+                ctx.closePath();
+                lastend += arcsector;
+              }
+            }
+            var datalist= new Array(1, 1, 1);
+            var colist = new Array('green', 'orange', 'red');
+            var canvas = document.getElementById("myCamembert");
+            var ctx = canvas.getContext('2d');
+            pie(ctx, canvas.width, canvas.height, datalist);
+        })
+    </script>
+</body>
+</html>
